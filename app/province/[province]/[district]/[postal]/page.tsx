@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: desc,
-    alternates: { canonical: `https://www.postalcodenp.com/province/${pSlug}/${dSlug}/${postal}` },
+    alternates: { canonical: `https://postal.singhyogendra.com.np/province/${pSlug}/${dSlug}/${postal}` },
     openGraph: {
       title,
       description: desc,

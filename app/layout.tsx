@@ -3,7 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.postalcodenp.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://postal.singhyogendra.com.np';
 
 export const metadata: Metadata = {
   title: 'Nepal Postal Code — Find Any Postal Code in Nepal | PostalNP',

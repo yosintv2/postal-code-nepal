@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.postalcodenp.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://postal.singhyogendra.com.np';
 
 export default function robots(): MetadataRoute.Robots {
   return {

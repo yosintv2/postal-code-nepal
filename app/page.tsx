@@ -8,7 +8,7 @@ import Faq from '@/components/Faq';
 export const metadata: Metadata = {
   title: 'Nepal Postal Code — Find Any Postal Code in Nepal | PostalNP',
   description: 'Complete Nepal postal code directory. Find 5-digit postal codes for all 7 provinces, 77 districts and thousands of localities. Free postal code lookup for Nepal.',
-  alternates: { canonical: 'https://www.postalcodenp.com/' },
+  alternates: { canonical: 'https://postal.singhyogendra.com.np/' },
 };
 
 const HOME_FAQS = [

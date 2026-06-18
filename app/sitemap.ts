@@ -3,7 +3,7 @@ import { getAllProvinces } from '@/lib/postal';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.postalcodenp.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://postal.singhyogendra.com.np';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const provinces = await getAllProvinces();

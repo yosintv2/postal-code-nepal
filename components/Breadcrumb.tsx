@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.postalcodenp.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://postal.singhyogendra.com.np';
 
 interface BreadcrumbItem {
   label: string;

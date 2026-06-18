@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: desc,
-    alternates: { canonical: `https://www.postalcodenp.com/province/${slug}` },
+    alternates: { canonical: `https://postal.singhyogendra.com.np/province/${slug}` },
     openGraph: { title, description: desc, type: 'website' },
   };
 }
