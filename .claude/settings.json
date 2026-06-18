@@ -9,7 +9,11 @@
       "Bash(mkdir -p /Users/apple/Downloads/postal/public)",
       "Bash(gh auth *)",
       "Bash(git commit -m ' *)",
-      "Bash(xargs sed -i '' 's|https://www\\\\.postalcodenp\\\\.com|https://postal.singhyogendra.com.np|g; s|https://yosintv2\\\\.github\\\\.io/postal-code-nepal|https://postal.singhyogendra.com.np|g')"
+      "Bash(xargs sed -i '' 's|https://www\\\\.postalcodenp\\\\.com|https://postal.singhyogendra.com.np|g; s|https://yosintv2\\\\.github\\\\.io/postal-code-nepal|https://postal.singhyogendra.com.np|g')",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/app/sitemap-html)"
+    ],
+    "additionalDirectories": [
+      "/Users/apple/Downloads/postal/app"
     ]
   }
 }

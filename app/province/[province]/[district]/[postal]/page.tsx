@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { getAllProvinces, getProvince, getDistrict, getLocation, PROVINCE_INFO } from '@/lib/postal';
 import Breadcrumb from '@/components/Breadcrumb';
 import Faq from '@/components/Faq';
+import CopyButton from '@/components/CopyButton';
+import ShareButtons from '@/components/ShareButtons';
 
 type Props = { params: Promise<{ province: string; district: string; postal: string }> };
 
@@ -28,15 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!district) return {};
   const location = getLocation(district, postal);
   if (!location) return {};
-  const title = `${location.name} Postal Code: ${postal} | ${district.name}, ${province.provinceName} | PostalNP`;
-  const desc = `The postal code of ${location.name}, ${district.name} district, ${province.provinceName}, Nepal is ${postal}. Find the correct address format and nearby postal codes.`;
   const lName = location.name;
   const dName = district.name;
   const pName = province.provinceName;
+  const title = `${lName} Postal Code: ${postal} | ${dName}, ${pName} | PostalNP`;
+  const desc = `The postal code of ${lName}, ${dName} district, ${pName}, Nepal is ${postal}. Find the correct address format and nearby postal codes.`;
   return {
     title,
     description: desc,
-    keywords: `${lName} postal code, postal code ${lName}, ${lName} zip code of nepal, ${lName} post code of nepal, postal code of ${lName} nepal, ${lName} ${dName} postal code, ${postal} postal code nepal, what is postal code of ${lName}, ${lName} area postal code, ${lName} post office code, ${pName} ${lName} postal code, ${lName} zip code`,
+    keywords: `${lName} postal code, postal code ${lName}, ${lName} zip code of nepal, ${lName} post code of nepal, postal code of ${lName} nepal, ${lName} ${dName} postal code, ${postal} postal code nepal, what is postal code of ${lName}, ${lName} area postal code, ${lName} post office code, ${pName} ${lName} postal code, ${lName} zip code, ${lName} pin code nepal`,
     alternates: { canonical: `https://postal.singhyogendra.com.np/province/${pSlug}/${dSlug}/${postal}` },
     openGraph: { title, description: desc, type: 'website' },
   };
@@ -54,8 +56,8 @@ export default async function PostalPage({ params }: Props) {
   const otherLocations = district.locations.filter(l => l.postalCode !== postal).slice(0, 10);
   const otherProvinces = (await getAllProvinces()).filter(p => p.provinceSlug !== pSlug);
   const info = PROVINCE_INFO[pSlug];
-
   const nearbyStr = otherLocations.slice(0, 5).map(l => `${l.name} (${l.postalCode})`).join(', ');
+  const dpo = district.locations.find(l => l.type === 'DPO') ?? district.locations[0];
 
   const faqs = [
     {
@@ -88,17 +90,43 @@ export default async function PostalPage({ params }: Props) {
         ? `Other post offices in ${district.name} district include: ${nearbyStr}. Browse all ${district.locations.length} locations in ${district.name} to find your specific area.`
         : `${location.name} is one of ${district.locations.length} post offices in ${district.name} district. Browse the district page to see all locations.`,
     },
+    {
+      q: `Is ${postal} the same as a PIN code for ${location.name}?`,
+      a: `Yes — postal code and PIN code refer to the same thing. In Nepal, the official term is "postal code." The 5-digit code ${postal} is used for ${location.name}, ${district.name}, and can be entered as PIN/ZIP code on any international form.`,
+    },
+    {
+      q: `Can I use postal code ${postal} for international shipping to ${location.name}?`,
+      a: `Yes. When shipping internationally to ${location.name}, ${district.name}, ${province.provinceName}, Nepal, enter ${postal} as the postal/ZIP code. Nepal Post and international couriers (DHL, FedEx, UPS) accept this code for delivery routing.`,
+    },
+    {
+      q: `What courier services deliver to ${location.name} (${postal})?`,
+      a: `${location.name} (${postal}) is served by Nepal Post. Private couriers such as DHL, FedEx, and local services like Aramex Nepal also deliver to addresses in ${district.name} district using postal code ${postal}.`,
+    },
+    {
+      q: `How do I verify if postal code ${postal} is correct for ${location.name}?`,
+      a: `Postal code ${postal} is the officially assigned Nepal Post code for ${location.name}, ${district.name} district, ${province.provinceName}. You can verify by checking the Nepal Post official website at nepalpost.gov.np or by contacting the ${dpo?.postalCode ? `D.P.O. (${dpo.postalCode})` : 'district post office'} for ${district.name}.`,
+    },
   ];
 
   const jsonLd = [
     {
       '@context': 'https://schema.org',
-      '@type': 'PostalAddress',
-      addressLocality: location.name,
-      addressRegion: district.name,
-      postalCode: postal,
-      addressCountry: 'NP',
+      '@type': 'PostOffice',
       name: `${location.name} Post Office`,
+      description: `${location.type === 'DPO' ? 'District Post Office' : 'Area Post Office'} in ${district.name}, ${province.provinceName}, Nepal`,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: location.name,
+        addressLocality: district.name,
+        addressRegion: province.provinceName,
+        postalCode: postal,
+        addressCountry: 'NP',
+      },
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: district.name,
+        containedInPlace: { '@type': 'AdministrativeArea', name: province.provinceName },
+      },
     },
     {
       '@context': 'https://schema.org',
@@ -126,6 +154,7 @@ export default async function PostalPage({ params }: Props) {
         ]} />
       </div>
 
+      {/* Hero */}
       <section className="postal-detail">
         <div className="postal-code-hero">
           <div className="postal-code-label">Postal Code</div>
@@ -133,6 +162,9 @@ export default async function PostalPage({ params }: Props) {
           {location.type && (
             <span className={`type-badge-lg type-${location.type.toLowerCase()}`}>{location.type}</span>
           )}
+          <div className="postal-hero-actions">
+            <CopyButton text={postal} label="Copy Code" variant="hero" />
+          </div>
         </div>
         <div className="postal-info-grid">
           <div className="postal-info-row">
@@ -164,7 +196,22 @@ export default async function PostalPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Share */}
       <section className="section">
+        <h2 className="section-heading">
+          <div className="accent-bar" />
+          Share this Postal Code
+        </h2>
+        <ShareButtons
+          postalCode={postal}
+          locationName={location.name}
+          districtName={district.name}
+          provinceName={province.provinceName}
+        />
+      </section>
+
+      {/* Address format */}
+      <section className="section section-alt">
         <h2 className="section-heading">
           <div className="accent-bar" />
           Address Format
@@ -177,10 +224,18 @@ export default async function PostalPage({ params }: Props) {
           <div className="address-line">{province.provinceName}</div>
           <div className="address-line">Nepal &mdash; <strong>{postal}</strong></div>
         </div>
+        <div style={{ marginTop: 12 }}>
+          <CopyButton
+            text={`${location.name}, ${district.name} District, ${province.provinceName}, Nepal - ${postal}`}
+            label="Copy Full Address"
+            variant="default"
+          />
+        </div>
       </section>
 
+      {/* Nearby */}
       {otherLocations.length > 0 && (
-        <section className="section section-alt">
+        <section className="section">
           <h2 className="section-heading">
             <div className="accent-bar" />
             Other Post Offices in {district.name}
@@ -199,7 +254,8 @@ export default async function PostalPage({ params }: Props) {
         </section>
       )}
 
-      <section className="section">
+      {/* Other provinces */}
+      <section className="section section-alt">
         <h2 className="section-heading">
           <div className="accent-bar" />
           Other Provinces in Nepal

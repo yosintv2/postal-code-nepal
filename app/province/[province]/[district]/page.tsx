@@ -66,6 +66,18 @@ export default async function DistrictPage({ params }: Props) {
       q: `How do I use the ${district.name} postal code?`,
       a: `When addressing mail to ${district.name}, ${province.provinceName}, Nepal, use the 5-digit postal code of the specific locality. For example, use ${dpo?.postalCode ?? ''} for the district headquarters area. Click on any location below to see the full address format.`,
     },
+    {
+      q: `Is ${district.name} postal code the same as a ZIP or PIN code?`,
+      a: `Yes — postal code, ZIP code, and PIN code all refer to the same 5-digit area identifier. In Nepal, the official term is postal code. The ${district.name} D.P.O. code ${dpo?.postalCode ?? ''} can be entered as ZIP or PIN code on any international form when sending mail to ${district.name}, Nepal.`,
+    },
+    {
+      q: `What courier services deliver to ${district.name} district?`,
+      a: `${district.name} district is served by Nepal Post as the primary postal service. Private couriers including DHL, FedEx, Aramex Nepal, and various local services also deliver to ${district.name} using the postal codes listed on this page.`,
+    },
+    {
+      q: `What is the address format for ${district.name}, ${province.provinceName}?`,
+      a: `A standard address in ${district.name} district: [Recipient Name], [Street/Ward/Tole], [Locality Name], ${district.name} District, ${province.provinceName}, Nepal - [5-digit postal code]. Click on any post office below to see the complete address format with its specific code.`,
+    },
   ];
 
   const jsonLd = {

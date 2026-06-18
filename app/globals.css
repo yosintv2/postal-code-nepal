@@ -188,10 +188,10 @@ body {
 .search-result-item:last-child { border-bottom: none; }
 .search-result-item:hover { background: var(--bg-alt); }
 .search-result-code {
-  font-size: 0.875rem; font-weight: 800; color: var(--gold);
+  font-size: 0.875rem; font-weight: 800; color: #111;
   background: var(--gold-light); padding: 4px 9px;
   border-radius: 6px; font-family: monospace; flex-shrink: 0;
-  min-width: 52px; text-align: center;
+  min-width: 52px; text-align: center; border: 1px solid #fde68a;
 }
 .search-result-text {
   flex: 1; min-width: 0; text-align: left;
@@ -332,12 +332,12 @@ body {
 /* ── Postal code badges ─────────────────────────────────────── */
 .postal-badge {
   display: inline-flex; align-items: center;
-  background: var(--gold-light); color: var(--gold);
+  background: var(--gold-light); color: #111;
   font-weight: 700; font-size: 0.875rem; font-family: monospace;
   padding: 3px 10px; border-radius: 6px; text-decoration: none;
   border: 1px solid #fde68a; transition: all 0.12s;
 }
-.postal-badge:hover { background: #fde68a; color: #92400e; }
+.postal-badge:hover { background: #fde68a; color: #000; }
 
 .type-badge {
   display: inline-block; font-size: 0.7rem; font-weight: 700;
@@ -404,9 +404,10 @@ body {
 }
 .nearby-item:hover { border-color: var(--navy); background: var(--bg-alt); }
 .nearby-code {
-  font-size: 0.9rem; font-weight: 700; color: var(--gold);
+  font-size: 0.9rem; font-weight: 700; color: #111;
   background: var(--gold-light); padding: 3px 9px;
   border-radius: 5px; font-family: monospace; flex-shrink: 0;
+  border: 1px solid #fde68a;
 }
 .nearby-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
 .view-all-link {
@@ -513,6 +514,100 @@ footer { background: var(--navy-dark); color: rgba(255,255,255,0.8); margin-top:
 .about-province-item:hover { border-color: var(--red); background: #fff5f5; }
 .about-province-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
 .about-province-meta { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ── Copy button ────────────────────────────────────────────── */
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; border: none; transition: all 0.15s;
+}
+.copy-btn-default {
+  background: var(--gold-light); color: #111; border: 1px solid #fde68a;
+}
+.copy-btn-default:hover { background: #fde68a; }
+.copy-btn-default.copied { background: #dcfce7; color: #15803d; border-color: #86efac; }
+.copy-btn-hero {
+  background: rgba(255,255,255,0.18); color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+.copy-btn-hero:hover { background: rgba(255,255,255,0.28); }
+.copy-btn-hero.copied { background: #dcfce7; color: #15803d; border-color: #86efac; }
+
+/* ── Share buttons ───────────────────────────────────────────── */
+.share-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; font-family: inherit; text-decoration: none; border: none;
+  transition: all 0.15s;
+}
+.share-btn-wa { background: #25d366; color: #fff; }
+.share-btn-wa:hover { background: #1aab55; }
+.share-btn-copy { background: var(--bg-alt); color: var(--text); border: 1px solid var(--border); }
+.share-btn-copy:hover { background: var(--border-lt); }
+.share-btn-copy.copied { background: #dcfce7; color: #15803d; border-color: #86efac; }
+
+/* Copy + share action row inside postal hero */
+.postal-hero-actions {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px;
+}
+
+/* ── Sitemap page ────────────────────────────────────────────── */
+.sitemap-grid { display: flex; flex-direction: column; gap: 28px; }
+.sitemap-province {
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+}
+.sitemap-province-link {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--navy); color: #fff; padding: 14px 18px;
+  font-size: 1rem; font-weight: 800; text-decoration: none;
+  transition: background 0.15s;
+}
+.sitemap-province-link:hover { background: var(--navy-mid); }
+.sitemap-province-num {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; background: rgba(255,255,255,0.15);
+  padding: 2px 8px; border-radius: 4px; white-space: nowrap;
+}
+.sitemap-districts { padding: 10px 14px; }
+.sitemap-district {
+  border: 1px solid var(--border-lt); border-radius: 7px;
+  margin-bottom: 6px; overflow: hidden;
+}
+.sitemap-district-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; cursor: pointer; font-size: 0.875rem; font-weight: 700;
+  color: var(--text); list-style: none; background: var(--bg-alt);
+  transition: background 0.12s;
+}
+.sitemap-district-link:hover { background: var(--bg-section); }
+.sitemap-district-link::-webkit-details-marker { display: none; }
+.sitemap-district-link a { color: var(--navy); text-decoration: none; }
+.sitemap-district-link a:hover { text-decoration: underline; }
+.sitemap-count {
+  font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
+  background: var(--border-lt); padding: 2px 8px; border-radius: 10px; flex-shrink: 0;
+}
+.sitemap-locations {
+  list-style: none; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px;
+}
+.sitemap-loc-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 8px; border-radius: 5px; text-decoration: none;
+  transition: background 0.1s;
+}
+.sitemap-loc-link:hover { background: var(--bg-alt); }
+.sitemap-loc-code {
+  font-size: 0.78rem; font-weight: 700; color: #111;
+  background: var(--gold-light); padding: 2px 7px;
+  border-radius: 4px; font-family: monospace; flex-shrink: 0;
+  border: 1px solid #fde68a; min-width: 46px; text-align: center;
+}
+.sitemap-loc-name { font-size: 0.82rem; color: var(--text-mid); flex: 1; }
+.sitemap-type {
+  font-size: 0.65rem; font-weight: 700; padding: 1px 6px; border-radius: 4px;
+  text-transform: uppercase; flex-shrink: 0;
+}
 
 /* ── Not found ──────────────────────────────────────────────── */
 .not-found {

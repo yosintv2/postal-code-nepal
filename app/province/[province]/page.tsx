@@ -63,6 +63,20 @@ export default async function ProvincePage({ params }: Props) {
       q: `How do I find a specific postal code in ${province.provinceName}?`,
       a: `Click on any district below to see all post office locations and their 5-digit postal codes within that district of ${province.provinceName}. You can also use the search box on the homepage.`,
     },
+    {
+      q: `What region is ${province.provinceName} in?`,
+      a: info
+        ? `${province.provinceName} is located in the ${info.region} region of Nepal. It is Province No. ${province.provinceNum} and its provincial capital is ${info.capital}.`
+        : `${province.provinceName} is one of Nepal's 7 federal provinces established under the 2015 Constitution.`,
+    },
+    {
+      q: `Can I use ${province.provinceName} postal codes for international mail?`,
+      a: `Yes. The 5-digit postal codes in ${province.provinceName} are official Nepal Post codes and are accepted on all international address forms, e-commerce platforms, and courier shipments to Nepal. Use the specific locality code shown on each postal code page.`,
+    },
+    {
+      q: `What is the difference between D.P.O. and A.P.O. in ${province.provinceName}?`,
+      a: `D.P.O. (District Post Office) is the main postal hub of a district, while A.P.O. (Area Post Office) is a branch serving a specific locality. In ${province.provinceName}, each of the ${province.totalDistricts} districts has one D.P.O. with branch A.P.O.s for surrounding areas.`,
+    },
   ];
 
   const jsonLd = {

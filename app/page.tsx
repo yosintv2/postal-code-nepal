@@ -33,6 +33,18 @@ const HOME_FAQS = [
     q: 'Are Nepal postal codes the same as ZIP codes?',
     a: "Nepal uses the term 'postal code' rather than 'ZIP code' (which is a US term), but they serve the same purpose. Nepal postal codes are 5 digits and can be used in the postal/ZIP code field on international address forms and e-commerce websites when shipping to Nepal.",
   },
+  {
+    q: 'What is the postal code range in Nepal?',
+    a: 'Nepal postal codes are 5-digit numbers ranging approximately from 10100 in Koshi Province to 96900 in Sudurpashchim Province. Each province and district has its own range, making it easy to identify which region a code belongs to.',
+  },
+  {
+    q: 'How do I write a Nepal address for international shipping?',
+    a: 'For international shipments to Nepal, write: [Recipient Name], [Street/Ward/Tole], [Locality], [District] District, [Province], Nepal - [5-digit postal code]. Always include the 5-digit postal code at the end to ensure correct delivery by Nepal Post or international couriers.',
+  },
+  {
+    q: 'Can I use PostalNP to find postal codes for courier services?',
+    a: 'Yes. PostalNP lists official Nepal Post postal codes accepted by all major courier services including DHL, FedEx, Aramex Nepal, and local couriers. Simply find your locality and use the 5-digit code shown on the postal code detail page.',
+  },
 ];
 
 export default async function HomePage() {
