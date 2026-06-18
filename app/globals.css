@@ -224,9 +224,17 @@ body {
   display: flex; gap: 16px; font-size: 0.78rem; font-weight: 600;
   color: var(--navy); margin-bottom: 6px;
 }
-.province-card-range { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; }
+.province-card-range { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 14px; }
 .province-card-arrow {
-  font-size: 0.82rem; font-weight: 700; color: var(--red);
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--red); color: #fff;
+  padding: 9px 18px; border-radius: 7px;
+  font-size: 0.82rem; font-weight: 700;
+  transition: background 0.15s, transform 0.12s;
+  box-shadow: 0 2px 6px rgba(192,57,43,0.25);
+}
+.province-card:hover .province-card-arrow {
+  background: var(--red-dark); transform: translateX(3px);
 }
 
 /* ── Steps grid ─────────────────────────────────────────────── */
@@ -259,8 +267,18 @@ body {
 }
 .district-card-name { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .district-card-count { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 3px; }
-.district-card-dpo { font-size: 0.78rem; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
-.district-card-arrow { font-size: 0.78rem; font-weight: 600; color: var(--navy); }
+.district-card-dpo { font-size: 0.78rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+.district-card-arrow {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--navy); color: #fff;
+  padding: 7px 14px; border-radius: 6px;
+  font-size: 0.78rem; font-weight: 700;
+  transition: background 0.15s, transform 0.12s;
+  box-shadow: 0 2px 4px rgba(26,58,107,0.2);
+}
+.district-card:hover .district-card-arrow {
+  background: var(--navy-mid); transform: translateX(3px);
+}
 
 /* ── Province links pills ───────────────────────────────────── */
 .province-links { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -462,6 +480,32 @@ footer { background: var(--navy-dark); color: rgba(255,255,255,0.8); margin-top:
   padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 0.75rem; color: rgba(255,255,255,0.4);
 }
+
+/* ── About / Privacy body ───────────────────────────────────── */
+.about-body { max-width: 760px; }
+.about-body h2 {
+  font-size: 1.05rem; font-weight: 800; color: var(--navy);
+  margin: 28px 0 10px; padding-bottom: 6px;
+  border-bottom: 2px solid var(--border-lt);
+}
+.about-body h2:first-child { margin-top: 0; }
+.about-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 12px; }
+.about-body ul, .about-body ol {
+  margin: 0 0 14px 20px; font-size: 0.9rem; color: var(--text-mid); line-height: 1.8;
+}
+.about-body a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+.about-body a:hover { color: var(--red); }
+
+.about-province-list { display: flex; flex-direction: column; gap: 6px; margin: 14px 0; }
+.about-province-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: 8px; background: #fff; text-decoration: none;
+  transition: all 0.12s;
+}
+.about-province-item:hover { border-color: var(--red); background: #fff5f5; }
+.about-province-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.about-province-meta { font-size: 0.78rem; color: var(--text-muted); }
 
 /* ── Not found ──────────────────────────────────────────────── */
 .not-found {

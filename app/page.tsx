@@ -8,6 +8,7 @@ import Faq from '@/components/Faq';
 export const metadata: Metadata = {
   title: 'Nepal Postal Code — Find Any Postal Code in Nepal | PostalNP',
   description: 'Complete Nepal postal code directory. Find 5-digit postal codes for all 7 provinces, 77 districts and thousands of localities. Free postal code lookup for Nepal.',
+  keywords: 'find postal code nepal, nepal postal code, postal code nepal, nepal zip code, nepal post code, postal code of nepal, nepal postal code finder, bagmati postal code, koshi postal code, kathmandu postal code, postal code search nepal, nepal post office code, nepali postal code, all nepal postal codes, postal code by area nepal',
   alternates: { canonical: 'https://postal.singhyogendra.com.np/' },
 };
 

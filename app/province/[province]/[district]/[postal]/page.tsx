@@ -30,15 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!location) return {};
   const title = `${location.name} Postal Code: ${postal} | ${district.name}, ${province.provinceName} | PostalNP`;
   const desc = `The postal code of ${location.name}, ${district.name} district, ${province.provinceName}, Nepal is ${postal}. Find the correct address format and nearby postal codes.`;
+  const lName = location.name;
+  const dName = district.name;
+  const pName = province.provinceName;
   return {
     title,
     description: desc,
+    keywords: `${lName} postal code, postal code ${lName}, ${lName} zip code of nepal, ${lName} post code of nepal, postal code of ${lName} nepal, ${lName} ${dName} postal code, ${postal} postal code nepal, what is postal code of ${lName}, ${lName} area postal code, ${lName} post office code, ${pName} ${lName} postal code, ${lName} zip code`,
     alternates: { canonical: `https://postal.singhyogendra.com.np/province/${pSlug}/${dSlug}/${postal}` },
-    openGraph: {
-      title,
-      description: desc,
-      type: 'website',
-    },
+    openGraph: { title, description: desc, type: 'website' },
   };
 }
 

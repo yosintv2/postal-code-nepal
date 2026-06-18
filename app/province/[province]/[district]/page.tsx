@@ -22,9 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!district) return {};
   const title = `${district.name} District Postal Code — ${district.locations.length} Locations | ${province.provinceName}`;
   const desc = `Postal codes for all ${district.locations.length} post offices in ${district.name} district, ${province.provinceName}, Nepal. Find the 5-digit postal code for your location.`;
+  const dName = district.name;
+  const pName = province.provinceName;
   return {
     title,
     description: desc,
+    keywords: `${dName} postal code, postal code of ${dName}, postal code ${dName}, ${dName} zip code of nepal, ${dName} post code of nepal, ${dName} district postal code, ${dName} nepal postal code, ${pName} ${dName} postal code, ${dName} area postal code, post office ${dName} nepal, ${dName} post code`,
     alternates: { canonical: `https://postal.singhyogendra.com.np/province/${pSlug}/${dSlug}` },
     openGraph: { title, description: desc, type: 'website' },
   };

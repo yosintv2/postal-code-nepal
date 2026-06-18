@@ -61,9 +61,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="footer-col-title">About</div>
+            <div className="footer-col-title">About & Legal</div>
             <div className="footer-links">
-              <Link href="/" className="footer-link">Nepal Postal Code Finder</Link>
+              <Link href="/about" className="footer-link">About PostalNP</Link>
+              <Link href="/privacy" className="footer-link">Privacy Policy</Link>
               <Link href="/#provinces" className="footer-link">Browse All Provinces</Link>
               <Link href="/province/bagmati" className="footer-link">Bagmati Postal Codes</Link>
               <Link href="/province/sudurpashchim" className="footer-link">Sudurpashchim Postal Codes</Link>

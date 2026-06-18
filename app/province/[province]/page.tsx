@@ -18,9 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!province) return {};
   const title = `${province.provinceName} Postal Code — All ${province.totalDistricts} Districts | PostalNP`;
   const desc = `Find postal codes for all ${province.totalDistricts} districts in ${province.provinceName}, Nepal. Browse district-wise post office locations and 5-digit postal codes.`;
+  const pName = province.provinceName;
   return {
     title,
     description: desc,
+    keywords: `${pName} postal code, postal code of ${pName}, postal code ${pName}, ${pName} zip code of nepal, ${pName} post code of nepal, ${pName} province postal code, ${pName} district postal codes, postal code ${pName} nepal, find postal code ${pName}, ${pName} postal code list`,
     alternates: { canonical: `https://postal.singhyogendra.com.np/province/${slug}` },
     openGraph: { title, description: desc, type: 'website' },
   };
