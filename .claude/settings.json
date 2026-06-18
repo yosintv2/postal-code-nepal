@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.singhyogendra.com.np)",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/app/province/\\\\[province\\\\]/\\\\[district\\\\]/\\\\[postal\\\\])",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/components)",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/lib)",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/types)",
+      "Bash(mkdir -p /Users/apple/Downloads/postal/public)",
+      "Bash(gh auth *)"
+    ]
+  }
+}
